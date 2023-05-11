@@ -1,83 +1,113 @@
 const game = () => {
+    const options = document.querySelectorAll(".options");
     let playerScore = 0;
     let computerScore =0;
     let moves =0;
 
     
     const playRound = () => {
-    const computerChoice = ["rock", "paper", "scissors"];
-    const random = Math.floor(Math.random()* computerChoice.length)
-    console.log(computerChoice[random])
     
-    function getComputerChoice() {
-        return computerChoice[random]
+    
+        options.forEach((option) => {
+            option.addEventListener("click", function () {
+              const playerSelection = this.textContent;
+      
+              const cOptions = ["Rock", "Paper", "Scissors"];
+              const computerSelection = cOptions[Math.floor(Math.random() * 3)];
+      
+              compare(playerSelection, computerSelection);
+              updateScore();
+              if (checkWinner()){
+                playerScore = computerScore = 0;
+                updateScore();
+              }
+              
+            });
+          });
+        
+
+  
+        function checkWinner(){
+            if (playerScore === 2 || computerScore === 2 ) {
+                const winner = 
+                playerScore === 2 
+                ? "You win"
+                : "Computer wins"
+                alert(winner);
+                return true;
+            }
+            return false;
+        }
+    
+    
+    
+    
+        function updateScore() {
+        document.getElementById("p-score").textContent = playerScore;
+        document.getElementById("c-score").textContent = computerScore;
     }
-    
-    const computerSelection = getComputerChoice();
-    
-    let playerSelection = prompt("Rock" + " "+ "paper" + " " + "scissors" + "?").toLowerCase();
      
     
-    let compare = function(choice1, choice2) {
-        if (choice1 === choice2) {
+    function compare(playerSelection, computerSelection) {
+
+        const currentMatch = `${playerSelection} vs ${computerSelection}`;
+
+        if (playerSelection === computerSelection) {
             moves++;
-            return "The result is a tie."
+            
+            alert(`${currentMatch} - The result is a tie. `) ;
+            return;
         }
-        else if(choice1 === "rock") { if (choice2 === "scissors") {
+        else if(playerSelection === "Rock") { if (computerSelection === "Scissors") {
             computerScore++;
             moves++;
-            return "rock wins, you lose"
+            alert(`${currentMatch} - Rock wins, you lose `) ;
+            return;
         }
         else {
             playerScore++;
             moves++;
-            return "paper wins, you win"
+            alert(`${currentMatch} - Paper wins, you win`)
+            return ;
         }
         } 
-        else if (choice1 === "paper") {
-            if (choice2 === "rock") {
+        else if (playerSelection === "Paper") {
+            if (computerSelection === "Rock") {
                 computerScore++;
                 moves++;
-                return "paper wins, you lose."
+                alert(`${currentMatch} - Paper wins, you lose.`);
+                return ;
         
             }
             else {
                 playerScore++;
                 moves++;
-                return "scissors wins, you win."
+                alert(`${currentMatch} - Scissors wins, you win`);
+                return;
             }
         }
-        else if (choice1 === "scissors") {
-            if (choice2 === "paper") {
+        else if (playerSelection === "Scissors") {
+            if (computerSelection === "Paper") {
                 computerScore++;
                 moves++;
-                return "scissors wins, you lose"
+                alert(`${currentMatch} - Scissors wins, you lose`);
+                return;
             }
             else {
                 playerScore++;
                 moves++;
-                return "rock wins, you win."
+                alert(`${currentMatch} - Rock wins, you win.`);
+                return;
             }
         }
         
     }
-     
-    alert (compare(computerSelection, playerSelection)) 
+
+
 }
-const gameOver = () => {
-    if (computerScore > playerScore) {
-        return "Victory"
-    }
-    else {
-        return "Defeat"
-    }
-}
-playRound();
-playRound();
-playRound();
-playRound();
-playRound();
-alert (gameOver())
+
+playRound()
+
 
 }
 
