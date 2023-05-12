@@ -19,7 +19,8 @@ body {
 
 button {
     font-family: Roboto, sans-serif;
-    border: none;
+    border: 1px solid;
+    border-color: rgb(206, 173, 123);
     border-radius: 20px;
     background:white ;
     color: rgb(233, 203, 123);
@@ -29,16 +30,26 @@ button {
 
 
 h1 {
-    font-size: 70px;
+    font-size: 90px;
     font-weight: 800;
-    border: ;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 .content {
-    flex: 1;
+    flex: 2 1 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    
+  }
+
+  h2{
+    font-size: 35px;
+    text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
+  }
+  h3{
+    font-size: 20px;
+    text-shadow: -0.3px 0 white, 0 0.3px white, 0.3px 0 white, 0 -0.3px white;
   }
 
 

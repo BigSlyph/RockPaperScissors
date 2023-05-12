@@ -28,9 +28,9 @@ const game = () => {
 
   
         function checkWinner(){
-            if (playerScore === 2 || computerScore === 2 ) {
+            if (playerScore === 5 || computerScore === 5 ) {
                 const winner = 
-                playerScore === 2 
+                playerScore === 5 
                 ? "You win"
                 : "Computer wins"
                 alert(winner);
