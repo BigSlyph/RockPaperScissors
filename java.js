@@ -31,8 +31,8 @@ const game = () => {
             if (playerScore === 5 || computerScore === 5 ) {
                 const winner = 
                 playerScore === 5 
-                ? "You win"
-                : "Computer wins"
+                ? "🎉🎉🎉 You win 🎉🎉🎉"
+                : "💔 Computer wins 💔"
                 document.getElementById("text").innerHTML = (winner)
                 return true;
             }
