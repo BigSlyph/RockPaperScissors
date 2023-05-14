@@ -33,7 +33,7 @@ const game = () => {
                 playerScore === 5 
                 ? "You win"
                 : "Computer wins"
-                alert(winner);
+                document.getElementById("text").innerHTML = (winner)
                 return true;
             }
             return false;
@@ -50,24 +50,24 @@ const game = () => {
     
     function compare(playerSelection, computerSelection) {
 
-        const currentMatch = `${playerSelection} vs ${computerSelection}`;
-
+        
         if (playerSelection === computerSelection) {
             moves++;
             
-            alert(`${currentMatch} - The result is a tie. `) ;
+            document.getElementById("text").innerHTML = "The result is a Tie 👉👈";
+            
             return;
         }
         else if(playerSelection === "Rock") { if (computerSelection === "Scissors") {
             computerScore++;
             moves++;
-            alert(`${currentMatch} - Rock wins, you lose `) ;
+            document.getElementById("text").innerHTML = "  🎉 Rock vs Scissors --- Rock wins, so you win 🎉";
             return;
         }
         else {
             playerScore++;
             moves++;
-            alert(`${currentMatch} - Paper wins, you win`)
+            document.getElementById("text").innerHTML = "😢 Rock vs Paper --- Paper wins, so you lose. 😢"
             return ;
         }
         } 
@@ -75,14 +75,14 @@ const game = () => {
             if (computerSelection === "Rock") {
                 computerScore++;
                 moves++;
-                alert(`${currentMatch} - Paper wins, you lose.`);
+                document.getElementById("text").innerHTML =  "🎉 Paper vs Rock --- Paper wins, you win. 🎉";
                 return ;
         
             }
             else {
                 playerScore++;
                 moves++;
-                alert(`${currentMatch} - Scissors wins, you win`);
+                document.getElementById("text").innerHTML = "😢 Paper vs Scissors --- Scissors wins, you lose 😢"
                 return;
             }
         }
@@ -90,13 +90,13 @@ const game = () => {
             if (computerSelection === "Paper") {
                 computerScore++;
                 moves++;
-                alert(`${currentMatch} - Scissors wins, you lose`);
+                document.getElementById("text").innerHTML = "🎉 Scissors vs Paper --- Scissors wins, you win 🎉";
                 return;
             }
             else {
                 playerScore++;
                 moves++;
-                alert(`${currentMatch} - Rock wins, you win.`);
+                document.getElementById("text").innerHTML =  "😢 Scissors vs Rock --- Rock wins, you lose 😢";
                 return;
             }
         }
